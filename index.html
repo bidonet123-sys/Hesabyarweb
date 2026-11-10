@@ -2,124 +2,91 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#155e52"><title>حسابیار شخصی</title>
+<meta name="theme-color" content="#176b57">
+<title>حسابیار شخصی</title>
 <style>
-:root{--bg:#f3f7f5;--panel:#fff;--ink:#17332e;--muted:#71817b;--accent:#167564;--line:#e3ebe7;--danger:#c34e4e;--good:#16835e}
-[data-theme="dark"]{--bg:#101a18;--panel:#1a2925;--ink:#e6f1ed;--muted:#a4b7af;--accent:#55b8a0;--line:#30423b;--danger:#ff8585;--good:#5bd0a0}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Tahoma,Arial,sans-serif;font-size:14px}
-header{background:var(--accent);color:white;padding:18px max(16px,calc((100% - 1050px)/2));display:flex;align-items:center;justify-content:space-between;gap:12px}
-header h1{margin:0;font-size:22px}header small{opacity:.85}.wrap{max-width:1050px;margin:auto;padding:14px}
-nav{display:flex;gap:7px;overflow:auto;padding:4px 0 12px}
-nav button{white-space:nowrap;width:auto;margin:0;background:var(--panel);color:var(--ink);border:1px solid var(--line);padding:10px 13px}
-nav button.active{background:var(--accent);color:white;border-color:var(--accent)}
-.page{display:none}.page.active{display:block}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.card,section{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px;box-shadow:0 2px 8px #00000008}
-.card small,.muted{color:var(--muted)}.big{font-size:19px;font-weight:bold;margin-top:9px;overflow-wrap:anywhere}
-h2{font-size:17px;margin:0 0 12px}h3{font-size:14px;margin:0 0 8px}
-label{display:block;color:var(--muted);font-size:12px;margin:9px 0 5px}
-input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:11px}
-button,.btn{font:inherit;background:var(--accent);color:white;border:0;border-radius:9px;padding:11px 14px;cursor:pointer}
-button.secondary{background:var(--bg);color:var(--ink);border:1px solid var(--line)}
-button.danger{background:var(--danger)}button:disabled{opacity:.5}
-.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
-.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.actions button{width:auto}
-.item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--line)}
-.item:last-child{border:0}.item small{display:block;color:var(--muted);margin-top:4px}
-.pricegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.price{border:1px solid var(--line);border-radius:11px;padding:11px}.price b{display:block;margin:7px 0}
-.good{color:var(--good)}.bad{color:var(--danger)}.tag{font-size:11px;border-radius:20px;padding:4px 8px;background:var(--bg);color:var(--muted)}
-.note{font-size:12px;color:var(--muted);line-height:1.9}.empty{text-align:center;color:var(--muted);padding:18px}
-table{width:100%;border-collapse:collapse;font-size:12px}td,th{text-align:right;padding:9px 5px;border-bottom:1px solid var(--line)}.tablewrap{overflow:auto}
-hr{border:0;border-top:1px solid var(--line);margin:14px 0}
-@media(max-width:650px){.grid{grid-template-columns:repeat(2,1fr)}.pricegrid{grid-template-columns:repeat(2,1fr)}.row3{grid-template-columns:1fr 1fr}header h1{font-size:19px}}
-@media(max-width:380px){.row,.row3{grid-template-columns:1fr}.big{font-size:16px}}
-</style></head>
-<body>
-<header><div><h1 id="brand">حسابیار</h1><small id="welcome">مدیریت هوشمند دخل‌وخرج و دارایی‌ها</small></div><span class="tag" style="background:#ffffff25;color:white">نسخه شخصی</span></header>
-<div class="wrap">
-<nav>
-<button class="active" data-tab="home">داشبورد</button><button data-tab="transactions">تراکنش‌ها</button><button data-tab="assets">دارایی‌ها</button><button data-tab="prices">قیمت بازار</button><button data-tab="reports">گزارش‌ها</button><button data-tab="settings">شخصی‌سازی</button>
+:root{--accent:#176b57;--bg:#f3f6f5;--card:#fff;--text:#17211e;--muted:#718078;--line:#e3eae6;--danger:#c0392b;--shadow:0 8px 24px #183b2b0c}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Tahoma,Arial,sans-serif;font-size:14px}button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:11px;padding:10px 14px;background:var(--accent);color:white}button.secondary{background:#e8f0ed;color:var(--text)}button.danger{background:#fff0ee;color:var(--danger)}input,select{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--text);outline-color:var(--accent)}label{display:block;color:var(--muted);font-size:12px;margin:0 0 6px}.wrap{max-width:1100px;margin:auto;padding:16px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:15px}.brand{font-size:22px;font-weight:bold}.sub{color:var(--muted);font-size:12px;margin-top:5px}.tabs{display:flex;gap:7px;overflow:auto;padding:5px 0 12px}.tabs button{white-space:nowrap;background:var(--card);color:var(--text);border:1px solid var(--line)}.tabs button.active{background:var(--accent);color:white}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px;box-shadow:var(--shadow);margin-bottom:12px}.metric{font-size:21px;font-weight:bold;margin-top:8px;overflow-wrap:anywhere}.muted{color:var(--muted)}.small{font-size:12px}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.row>*{flex:1}.formgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.sectiontitle{font-size:17px;font-weight:bold;margin:4px 0 14px}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:580px}th,td{text-align:right;padding:11px;border-bottom:1px solid var(--line);white-space:nowrap}th{color:var(--muted);font-size:12px}.positive{color:#16845d}.negative{color:var(--danger)}.hide{display:none!important}.pricegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.price{background:var(--bg);padding:11px;border-radius:12px}.price b{display:block;margin-top:6px}.actions{display:flex;gap:6px}.actions button{padding:7px 10px}.pill{background:var(--bg);padding:5px 9px;border-radius:20px;font-size:11px}.empty{text-align:center;color:var(--muted);padding:25px}.footer{text-align:center;color:var(--muted);font-size:11px;padding:20px}
+@media(max-width:700px){.grid{grid-template-columns:repeat(2,1fr)}.formgrid{grid-template-columns:1fr 1fr}.pricegrid{grid-template-columns:repeat(2,1fr)}.wrap{padding:11px}.metric{font-size:18px}}
+@media(max-width:420px){.formgrid{grid-template-columns:1fr}.top .brand{font-size:19px}}
+</style></head><body><div class="wrap">
+<header class="top"><div><div class="brand" id="brand">حسابیار شخصی</div><div class="sub" id="welcome">مدیریت دخل‌وخرج و دارایی‌ها</div></div><div class="row" style="flex:0 0 auto"><span class="pill" id="priceStatus">در حال دریافت قیمت‌ها…</span><button class="secondary" onclick="refreshPrices()">به‌روزرسانی قیمت</button></div></header>
+<nav class="tabs" id="tabs">
+<button class="active" data-tab="home">داشبورد</button><button data-tab="transactions">تراکنش‌ها</button><button data-tab="assets">دارایی‌ها</button><button data-tab="reports">گزارش‌ها</button><button data-tab="settings">تنظیمات</button>
 </nav>
-<div id="home" class="page active">
+<section id="home" class="page">
 <div class="grid">
-<div class="card"><small>موجودی خالص</small><div class="big" id="net">۰</div></div>
-<div class="card"><small>درآمد این ماه</small><div class="big good" id="monthIn">۰</div></div>
-<div class="card"><small>هزینه این ماه</small><div class="big bad" id="monthOut">۰</div></div>
-<div class="card"><small>ارزش دارایی‌ها</small><div class="big" id="assetTotal">۰</div></div>
+<div class="card"><div class="muted">موجودی خالص حساب‌ها</div><div class="metric" id="balance">۰ تومان</div></div>
+<div class="card"><div class="muted">درآمد این ماه</div><div class="metric positive" id="income">۰ تومان</div></div>
+<div class="card"><div class="muted">هزینه این ماه</div><div class="metric negative" id="expense">۰ تومان</div></div>
+<div class="card"><div class="muted">ارزش دارایی‌ها</div><div class="metric" id="assetTotal">۰ تومان</div></div>
 </div>
-<section><h2>قیمت‌های بازار</h2><div id="homePrices" class="pricegrid"><div class="empty">در حال دریافت قیمت‌ها…</div></div><div class="actions"><button class="secondary" onclick="refreshPrices()">به‌روزرسانی قیمت‌ها</button><span class="muted" id="updated"></span></div></section>
-<section><h2>آخرین تراکنش‌ها</h2><div id="recent"></div></section>
-<section><h2>بودجه ماهانه</h2><div id="budgetSummary" class="note">برای هر دسته در بخش شخصی‌سازی بودجه تعیین کن.</div></section>
-</div>
-<div id="transactions" class="page">
-<section><h2>ثبت تراکنش</h2><div class="row">
-<div><label>نوع تراکنش</label><select id="txType"><option value="expense">هزینه</option><option value="income">درآمد</option></select></div>
-<div><label>مبلغ (تومان)</label><input id="txAmount" type="number" min="1" inputmode="numeric" placeholder="مثلاً ۵۰۰۰۰۰"></div>
-<div><label>دسته‌بندی</label><select id="txCategory"></select></div><div><label>حساب</label><select id="txAccount"></select></div>
-<div><label>تاریخ</label><input id="txDate" type="date"></div><div><label>عنوان / توضیح</label><input id="txTitle" placeholder="مثلاً خرید روزانه"></div></div>
-<div class="actions"><button onclick="addTx()">ثبت تراکنش</button></div></section>
-<section><h2>فهرست تراکنش‌ها</h2><div class="row"><div><label>فیلتر نوع</label><select id="filterType" onchange="renderTx()"><option value="">همه</option><option value="income">درآمد</option><option value="expense">هزینه</option></select></div><div><label>جست‌وجو</label><input id="searchTx" oninput="renderTx()" placeholder="عنوان یا دسته"></div></div><div id="txList"></div></section>
-</div>
-<div id="assets" class="page">
-<section><h2>افزودن دارایی</h2><div class="row">
-<div><label>نوع دارایی</label><select id="assetType" onchange="assetTypeChanged()"><option value="manual">دارایی با قیمت دستی</option><option value="price_dollar_rl">دلار (تومان)</option><option value="price_eur">یورو (تومان)</option><option value="geram18">طلای ۱۸ عیار (گرم)</option><option value="geram24">طلای ۲۴ عیار (گرم)</option><option value="sekee">سکه امامی (عدد)</option><option value="nim">نیم‌سکه (عدد)</option><option value="rob">ربع‌سکه (عدد)</option></select></div>
-<div><label>نام دارایی</label><input id="assetLabel" placeholder="مثلاً پس‌انداز ارزی"></div>
-<div><label>مقدار</label><input id="assetQty" type="number" min="0" step="any" inputmode="decimal" placeholder="مثلاً ۲"></div>
-<div id="manualPriceWrap"><label>قیمت هر واحد (تومان)</label><input id="manualPrice" type="number" min="0" inputmode="numeric"></div></div>
-<div class="actions"><button onclick="addAsset()">ذخیره دارایی</button></div><p class="note">دارایی‌های متصل به بازار با قیمت دریافتی از Worker ارزش‌گذاری می‌شوند. قیمت دارایی دستی را خودت وارد می‌کنی.</p></section>
-<section><h2>سبد دارایی من</h2><div id="assetList"></div></section>
-</div>
-<div id="prices" class="page">
-<section><h2>قیمت لحظه‌ای</h2><div id="allPrices" class="pricegrid"></div><div class="actions"><button onclick="refreshPrices()">دریافت آخرین قیمت‌ها</button><span id="priceStatus" class="muted"></span></div><p class="note">منبع: خوراک غیررسمی TGJU از طریق Worker شما. به‌روزرسانی خودکار هر ۶۰ ثانیه انجام می‌شود؛ زمان نمایش داده‌شده زمان دریافت از Worker است و ممکن است منبع اصلی تأخیر داشته باشد.</p></section>
-</div>
-<div id="reports" class="page">
-<section><h2>گزارش ماهانه</h2><div class="row"><div><label>ماه</label><input id="reportMonth" type="month" onchange="renderReports()"></div></div><div class="grid"><div class="card"><small>درآمد</small><div class="big good" id="rIn">۰</div></div><div class="card"><small>هزینه</small><div class="big bad" id="rOut">۰</div></div><div class="card"><small>مانده ماه</small><div class="big" id="rNet">۰</div></div><div class="card"><small>تعداد تراکنش</small><div class="big" id="rCount">۰</div></div></div><h3>هزینه به تفکیک دسته</h3><div id="categoryReport"></div></section>
-</div>
-<div id="settings" class="page">
-<section><h2>شخصی‌سازی ظاهر و حساب</h2><div class="row">
-<div><label>نام نمایشی</label><input id="userName" placeholder="مثلاً حساب شخصی من"></div>
-<div><label>نام برنامه</label><input id="appName" placeholder="حسابیار"></div>
-<div><label>پوسته</label><select id="theme"><option value="light">روشن</option><option value="dark">تیره</option></select></div>
-<div><label>رنگ اصلی</label><select id="accent"><option value="#167564">سبز</option><option value="#2563a6">آبی</option><option value="#7952a5">بنفش</option><option value="#b56a25">نارنجی</option><option value="#b34868">صورتی</option></select></div></div><div class="actions"><button onclick="saveSettings()">ذخیره شخصی‌سازی</button></div></section>
-<section><h2>مدیریت دسته‌بندی‌ها و بودجه</h2><div class="row"><div><label>دسته هزینه جدید</label><input id="newCategory" placeholder="مثلاً درمان"></div><div><label>بودجه ماهانه (تومان)</label><input id="newBudget" type="number" placeholder="مثلاً ۳۰۰۰۰۰۰"></div></div><div class="actions"><button onclick="addCategory()">افزودن دسته و بودجه</button></div><div id="categoryList"></div></section>
-<section><h2>حساب‌ها</h2><div class="row"><div><label>نام حساب جدید</label><input id="newAccount" placeholder="مثلاً کارت بانک"></div></div><div class="actions"><button onclick="addAccount()">افزودن حساب</button></div><div id="accountList"></div></section>
-<section><h2>پشتیبان‌گیری و بازیابی</h2><p class="note">برای جلوگیری از ازدست‌رفتن اطلاعات، مرتباً فایل پشتیبان بگیر. اطلاعات در حافظه مرورگر همین دستگاه ذخیره می‌شوند.</p><div class="actions"><button onclick="backup()">دانلود پشتیبان</button><button class="secondary" onclick="$('restoreFile').click()">بازیابی از فایل</button><input id="restoreFile" type="file" accept="application/json" hidden onchange="restore(event)"></div><button class="danger" onclick="clearAll()">پاک‌کردن همه اطلاعات</button></section>
-</div>
-<footer class="note" style="text-align:center;padding:12px">حسابیار شخصی • داده‌ها روی همین مرورگر ذخیره می‌شوند؛ برای استفاده روی دستگاه دیگر فایل پشتیبان را منتقل کن.</footer>
-</div>
+<div class="card"><div class="sectiontitle">قیمت‌های لحظه‌ای بازار</div><div class="pricegrid" id="prices"><div class="empty">در حال دریافت…</div></div><div class="sub">منبع: TGJU از طریق Worker شما؛ قیمت‌ها ممکن است با تأخیر یا قطعی همراه باشند.</div></div>
+<div class="card"><div class="sectiontitle">آخرین تراکنش‌ها</div><div id="recent"></div></div>
+</section>
+<section id="transactions" class="page hide"><div class="card"><div class="sectiontitle">ثبت تراکنش جدید</div><div class="sub">تاریخ‌ها شمسی هستند؛ نمونه: ۱۴۰۵/۰۸/۲۰</div><form id="txForm" class="formgrid">
+<div><label>نوع</label><select id="txType"><option value="expense">هزینه</option><option value="income">درآمد</option></select></div>
+<div><label>مبلغ (تومان)</label><input id="txAmount" type="number" min="1" required placeholder="مثلاً 250000"></div>
+<div><label>عنوان</label><input id="txTitle" required placeholder="مثلاً خرید روزانه"></div>
+<div><label>دسته‌بندی</label><select id="txCategory"></select></div>
+<div><label>حساب</label><select id="txAccount"></select></div>
+<div><label>تاریخ</label><input id="txDate" type="text" inputmode="numeric" placeholder="۱۴۰۵/۰۸/۲۰" required></div>
+<div><button type="submit">ثبت تراکنش</button></div></form></div>
+<div class="card"><div class="sectiontitle">فهرست تراکنش‌ها</div><div class="tablewrap" id="txTable"></div></div></section>
+<section id="assets" class="page hide"><div class="card"><div class="sectiontitle">افزودن دارایی</div><form id="assetForm" class="formgrid">
+<div><label>نوع دارایی</label><select id="assetType"><option value="usd">دلار</option><option value="eur">یورو</option><option value="gold18">طلای ۱۸ عیار (گرم)</option><option value="gold24">طلای ۲۴ عیار (گرم)</option><option value="coin">سکه امامی</option><option value="half">نیم‌سکه</option><option value="quarter">ربع‌سکه</option><option value="manual">دارایی دلخواه</option></select></div>
+<div><label>تعداد / مقدار</label><input id="assetQty" type="number" step="any" min="0.000001" required value="1"></div>
+<div><label>نام دلخواه (فقط برای دارایی دلخواه)</label><input id="assetName" placeholder="مثلاً خودرو یا پس‌انداز"></div>
+<div><label>قیمت هر واحد به تومان (فقط دارایی دلخواه)</label><input id="assetPrice" type="number" min="0" placeholder="قیمت تخمینی"></div>
+<div><button type="submit">افزودن دارایی</button></div></form></div>
+<div class="card"><div class="sectiontitle">دارایی‌های من</div><div class="tablewrap" id="assetTable"></div></div></section>
+<section id="reports" class="page hide"><div class="card"><div class="sectiontitle">گزارش ماهانه</div><div class="sub">ماه را شمسی وارد کن؛ نمونه: ۱۴۰۵/۰۸</div><div class="row"><div><label>ماه</label><input type="text" id="reportMonth" inputmode="numeric" placeholder="۱۴۰۵/۰۸"></div><div><label>جمع درآمد</label><div class="metric positive" id="reportIncome">۰</div></div><div><label>جمع هزینه</label><div class="metric negative" id="reportExpense">۰</div></div><div><label>مانده ماه</label><div class="metric" id="reportNet">۰</div></div></div></div>
+<div class="card"><div class="sectiontitle">بودجه‌بندی دسته‌ها</div><form id="budgetForm" class="formgrid"><div><label>دسته‌بندی</label><select id="budgetCategory"></select></div><div><label>سقف ماهانه (تومان)</label><input type="number" id="budgetAmount" min="1" required></div><div><button>ذخیره بودجه</button></div></form><div id="budgetList"></div></div></section>
+<section id="settings" class="page hide"><div class="card"><div class="sectiontitle">شخصی‌سازی</div><div class="formgrid"><div><label>نام برنامه</label><input id="setApp"></div><div><label>نام شما</label><input id="setUser"></div><div><label>رنگ اصلی</label><input type="color" id="setColor" value="#176b57"></div><div><label>حالت نمایش</label><select id="setTheme"><option value="light">روشن</option><option value="dark">تیره</option></select></div><div><label>آدرس Worker قیمت‌ها</label><input id="setWorker" type="url"></div><div><label>دسته‌بندی جدید</label><input id="newCategory" placeholder="مثلاً درمان"></div><div><label>حساب جدید</label><input id="newAccount" placeholder="مثلاً کارت بانک"></div><div style="align-self:end"><button type="button" onclick="addCustom()">افزودن موارد</button></div></div></div>
+<div class="card"><div class="sectiontitle">پشتیبان‌گیری و بازیابی</div><p class="muted small">اطلاعات در همین مرورگر ذخیره می‌شود. برای جلوگیری از پاک‌شدن اطلاعات، مرتباً نسخه پشتیبان بگیرید.</p><div class="row"><button onclick="backup()">دریافت فایل پشتیبان</button><label class="secondary" style="padding:10px;border-radius:10px;text-align:center;cursor:pointer">بازیابی فایل پشتیبان<input type="file" accept="application/json" id="restoreFile" hidden></label></div></div>
+<div class="card"><div class="sectiontitle">مدیریت اطلاعات</div><button class="danger" onclick="clearAll()">پاک‌کردن همه اطلاعات برنامه</button></div></section>
+<div class="footer">حسابیار شخصی — اطلاعات مالی شما فقط در حافظه مرورگر این دستگاه ذخیره می‌شود.</div></div>
 <script>
-const $=id=>document.getElementById(id), API='https://hesabya-prices.bidonet123.workers.dev/';
-const defaults={tx:[],assets:[],categories:['خوراک','حمل‌ونقل','قبض و خدمات','خرید','درمان','تفریح','حقوق','سایر'],accounts:['نقدی','کارت بانکی','پس‌انداز'],budgets:{},settings:{userName:'',appName:'حسابیار',theme:'light',accent:'#167564'}};
-let db=JSON.parse(localStorage.getItem('hesabyar_pro')||'null')||defaults, prices={};
-function save(){localStorage.setItem('hesabyar_pro',JSON.stringify(db));renderAll()}
-function money(n){return Math.round(Number(n)||0).toLocaleString('fa-IR')+' تومان'}
+const WORKER_DEFAULT='https://hesabya-prices.bidonet123.workers.dev/';
+const defaults={tx:[],assets:[],categories:['خوراک','حمل‌ونقل','قبوض','خرید','درمان','تفریح','حقوق','سایر'],accounts:['نقدی','کارت بانکی','پس‌انداز'],budgets:{},settings:{app:'حسابیار شخصی',user:'',color:'#176b57',theme:'light',worker:WORKER_DEFAULT}};
+function migrateOld(){let oldTx=[],oldAssets=[];try{oldTx=JSON.parse(localStorage.getItem('hesabyar_tx')||'[]')}catch(e){}try{oldAssets=JSON.parse(localStorage.getItem('hesabyar_assets')||'[]')}catch(e){}
+return {...defaults,tx:Array.isArray(oldTx)?oldTx.map((x,i)=>({id:x.id||Date.now()+i,type:x.type==='income'?'income':'expense',amount:Number(x.amount)||0,title:x.title||'تراکنش قدیمی',category:x.category||'سایر',account:x.account||'نقدی',date:x.date||new Date().toISOString().slice(0,10)})):[],assets:Array.isArray(oldAssets)?oldAssets.map((x,i)=>({id:x.id||Date.now()+i,type:'manual',name:x.name||'دارایی قبلی',qty:1,price:Number(x.value)||0})):[]};}
+let db;try{db=JSON.parse(localStorage.getItem('hesabyar_pro')||'null')}catch(e){db=null}if(!db){db=migrateOld();persist()}function persist(){localStorage.setItem('hesabyar_pro',JSON.stringify(db))}
+let market={};const fmt=n=>Math.round(Number(n)||0).toLocaleString('fa-IR');
+const jalaliFmt=new Intl.DateTimeFormat('en-u-ca-persian-nu-latn',{year:'numeric',month:'2-digit',day:'2-digit'});
+function jalaliParts(iso){let d=new Date(iso+'T12:00:00Z');let p=jalaliFmt.formatToParts(d);let o={};p.forEach(x=>{if(x.type!=='literal')o[x.type]=Number(x.value)});return o}
+function showJalali(iso){if(!iso)return '';let p=jalaliParts(iso);return `${p.year}/${String(p.month).padStart(2,'0')}/${String(p.day).padStart(2,'0')}`}
+function showJalaliMonth(iso){let p=jalaliParts(iso);return `${p.year}/${String(p.month).padStart(2,'0')}`}
+function toGregorian(jy,jm,jd){if(jm<1||jm>12||jd<1||jd>31)return null;let start=Date.UTC(jy+621,2,15);for(let i=0;i<370;i++){let d=new Date(start+i*86400000);let p=jalaliParts(d.toISOString().slice(0,10));if(p.year===jy&&p.month===jm&&p.day===jd)return d.toISOString().slice(0,10)}return null}
+function parseJalali(s,monthOnly=false){let m=String(s||'').trim().replace(/[۰-۹]/g,c=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(c)).replace(/[٠-٩]/g,c=>'٠١٢٣٤٥٦٧٨٩'.indexOf(c)).replace(/-/g,'/').match(monthOnly?/^(\d{4})\/(\d{1,2})$/:/^(\d{4})\/(\d{1,2})\/(\d{1,2})$/);if(!m)return null;let y=+m[1],mo=+m[2];if(monthOnly)return y>=1300&&y<=1500&&mo>=1&&mo<=12?`${y}/${String(mo).padStart(2,'0')}`:null;return y>=1300&&y<=1500?toGregorian(y,mo,+m[3]):null}
+function today(){return new Date().toISOString().slice(0,10)}function currentJMonth(){return showJalaliMonth(today())}
+document.getElementById('txDate').value=showJalali(today());document.getElementById('reportMonth').value=currentJMonth();
+function money(n){return fmt(n)+' تومان'}function monthTx(){let m=parseJalali(document.getElementById('reportMonth').value,true)||currentJMonth();return db.tx.filter(t=>showJalaliMonth(t.date||today())===m)}
+function applySettings(){let s=db.settings||defaults.settings;document.documentElement.style.setProperty('--accent',s.color||defaults.settings.color);document.documentElement.style.setProperty('--bg',s.theme==='dark'?'#111a17':'#f3f6f5');document.documentElement.style.setProperty('--card',s.theme==='dark'?'#1d2924':'#fff');document.documentElement.style.setProperty('--text',s.theme==='dark'?'#edf5f0':'#17211e');document.documentElement.style.setProperty('--line',s.theme==='dark'?'#34443c':'#e3eae6');document.getElementById('brand').textContent=s.app||defaults.settings.app;document.getElementById('welcome').textContent=s.user?'خوش آمدی، '+s.user+' — مدیریت دخل‌وخرج و دارایی‌ها':'مدیریت دخل‌وخرج و دارایی‌ها';}
+function options(id,arr){document.getElementById(id).innerHTML=arr.map(x=>`<option>${esc(x)}</option>`).join('')}
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function monthNow(){return new Date().toISOString().slice(0,7)}
-$('txDate').value=new Date().toISOString().slice(0,10);$('reportMonth').value=monthNow();
-document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===b.dataset.tab));});
-function fillSelects(){ $('txCategory').innerHTML=db.categories.map(x=>`<option>${esc(x)}</option>`).join('');$('txAccount').innerHTML=db.accounts.map(x=>`<option>${esc(x)}</option>`).join('');}
-function addTx(){let amount=+$('txAmount').value,title=$('txTitle').value.trim();if(!(amount>0)||!title)return alert('مبلغ و عنوان معتبر وارد کن.');db.tx.unshift({id:Date.now(),type:$('txType').value,amount,title,category:$('txCategory').value,account:$('txAccount').value,date:$('txDate').value});$('txAmount').value='';$('txTitle').value='';save()}
-function delTx(id){if(confirm('تراکنش حذف شود؟')){db.tx=db.tx.filter(x=>x.id!==id);save()}}
-function renderTx(){let q=$('searchTx').value.toLowerCase(),f=$('filterType').value,arr=db.tx.filter(x=>(!f||x.type===f)&&(`${x.title} ${x.category} ${x.account}`).toLowerCase().includes(q));$('txList').innerHTML=arr.length?arr.map(x=>`<div class="item"><div><b>${esc(x.title)}</b><small>${esc(x.date)} • ${esc(x.category||'بدون دسته')} • ${esc(x.account||'')}</small></div><div style="text-align:left"><b class="${x.type==='income'?'good':'bad'}">${x.type==='income'?'+':'−'}${money(x.amount)}</b><br><button class="danger" style="padding:5px 8px;margin-top:5px" onclick="delTx(${x.id})">حذف</button></div></div>`).join(''):'<div class="empty">تراکنشی پیدا نشد.</div>'}
-function assetTypeChanged(){$('manualPriceWrap').style.display=$('assetType').value==='manual'?'block':'none';if(!$('assetLabel').value)$('assetLabel').value=$('assetType').selectedOptions[0].text}
-function unitPrice(a){return a.type==='manual'?a.manualPrice:(prices[a.type]?.toman||0)}
-function addAsset(){let type=$('assetType').value,qty=+$('assetQty').value,label=$('assetLabel').value.trim(),manualPrice=+$('manualPrice').value;if(!label||!(qty>0)||(type==='manual'&&!(manualPrice>0)))return alert('نام، مقدار و قیمت معتبر وارد کن.');db.assets.push({id:Date.now(),type,qty,label,manualPrice});$('assetQty').value='';$('assetLabel').value='';$('manualPrice').value='';save()}
-function delAsset(id){if(confirm('دارایی حذف شود؟')){db.assets=db.assets.filter(a=>a.id!==id);save()}}
-function renderAssets(){let total=db.assets.reduce((s,a)=>s+a.qty*unitPrice(a),0);$('assetTotal').textContent=money(total);$('assetList').innerHTML=db.assets.length?db.assets.map(a=>{let p=unitPrice(a),v=p*a.qty;return `<div class="item"><div><b>${esc(a.label)}</b><small>${a.qty.toLocaleString('fa-IR')} واحد × ${p?money(p):'قیمت در دسترس نیست'}</small></div><div style="text-align:left"><b>${money(v)}</b><br><button class="danger" style="padding:5px 8px;margin-top:5px" onclick="delAsset(${a.id})">حذف</button></div></div>`}).join(''):'<div class="empty">هنوز دارایی ثبت نکرده‌ای.</div>'}
-function priceCards(){let keys=['price_dollar_rl','price_eur','geram18','geram24','sekee','nim','rob'];let labels={price_dollar_rl:'دلار آزاد',price_eur:'یورو',geram18:'طلای ۱۸ عیار',geram24:'طلای ۲۴ عیار',sekee:'سکه امامی',nim:'نیم‌سکه',rob:'ربع‌سکه'};return keys.filter(k=>prices[k]).map(k=>`<div class="price"><small>${labels[k]}</small><b>${money(prices[k].toman)}</b><span class="tag">TGJU</span></div>`).join('')||'<div class="empty">هنوز قیمتی دریافت نشده است.</div>'}
-async function refreshPrices(){ $('priceStatus').textContent='در حال دریافت…';try{let r=await fetch(API+'?t='+Date.now());if(!r.ok)throw Error('HTTP '+r.status);let j=await r.json();if(!j.success||!j.data)throw Error(j.error||'پاسخ نامعتبر');prices=j.data;$('priceStatus').textContent='دریافت موفق';$('updated').textContent='به‌روزرسانی: '+new Date(j.updatedAt||Date.now()).toLocaleTimeString('fa-IR');}catch(e){$('priceStatus').textContent='خطا در دریافت قیمت؛ اتصال را بررسی کن.'}renderPrices();renderAssets()}
-function renderPrices(){$('homePrices').innerHTML=priceCards();$('allPrices').innerHTML=priceCards()}
-function renderHome(){let m=monthNow(),ins=db.tx.filter(x=>x.type==='income'),outs=db.tx.filter(x=>x.type==='expense'),mi=ins.filter(x=>x.date?.startsWith(m)).reduce((s,x)=>s+x.amount,0),mo=outs.filter(x=>x.date?.startsWith(m)).reduce((s,x)=>s+x.amount,0),all=ins.reduce((s,x)=>s+x.amount,0)-outs.reduce((s,x)=>s+x.amount,0);$('net').textContent=money(all);$('monthIn').textContent=money(mi);$('monthOut').textContent=money(mo);$('recent').innerHTML=db.tx.slice(0,5).map(x=>`<div class="item"><span>${esc(x.title)}<small>${esc(x.date||'')}</small></span><b class="${x.type==='income'?'good':'bad'}">${x.type==='income'?'+':'−'}${money(x.amount)}</b></div>`).join('')||'<div class="empty">هنوز تراکنشی ثبت نشده.</div>';let used={};outs.filter(x=>x.date?.startsWith(m)).forEach(x=>used[x.category]=(used[x.category]||0)+x.amount);let bs=Object.entries(db.budgets).filter(([k,v])=>v>0).map(([k,v])=>`${esc(k)}: ${money(used[k]||0)} از ${money(v)} (${Math.round((used[k]||0)/v*100)}٪)`);$('budgetSummary').innerHTML=bs.join('<br>')||'برای هر دسته در بخش شخصی‌سازی بودجه تعیین کن.'}
-function renderReports(){let m=$('reportMonth').value||monthNow(),a=db.tx.filter(x=>x.date?.startsWith(m)),i=a.filter(x=>x.type==='income').reduce((s,x)=>s+x.amount,0),o=a.filter(x=>x.type==='expense').reduce((s,x)=>s+x.amount,0);$('rIn').textContent=money(i);$('rOut').textContent=money(o);$('rNet').textContent=money(i-o);$('rCount').textContent=a.length.toLocaleString('fa-IR');let cats={};a.filter(x=>x.type==='expense').forEach(x=>cats[x.category]=(cats[x.category]||0)+x.amount);$('categoryReport').innerHTML=Object.entries(cats).sort((x,y)=>y[1]-x[1]).map(([k,v])=>`<div class="item"><span>${esc(k)}</span><b>${money(v)}</b></div>`).join('')||'<div class="empty">هزینه‌ای برای این ماه ثبت نشده.</div>'}
-function addCategory(){let n=$('newCategory').value.trim(),b=+$('newBudget').value;if(!n)return;if(!db.categories.includes(n))db.categories.push(n);if(b>0)db.budgets[n]=b;$('newCategory').value='';$('newBudget').value='';save()}
-function addAccount(){let n=$('newAccount').value.trim();if(n&&!db.accounts.includes(n)){db.accounts.push(n);$('newAccount').value='';save()}}
-function renderSettings(){$('userName').value=db.settings.userName||'';$('appName').value=db.settings.appName||'حسابیار';$('theme').value=db.settings.theme||'light';$('accent').value=db.settings.accent||'#167564';$('categoryList').innerHTML=db.categories.map(c=>`<div class="item"><span>${esc(c)} <small>بودجه: ${money(db.budgets[c]||0)}</small></span><button class="secondary" onclick="removeCategory('${esc(c)}')">حذف</button></div>`).join('');$('accountList').innerHTML=db.accounts.map(c=>`<div class="item"><span>${esc(c)}</span><button class="secondary" onclick="removeAccount('${esc(c)}')">حذف</button></div>`).join('')}
-function removeCategory(c){if(confirm('دسته حذف شود؟')){db.categories=db.categories.filter(x=>x!==c);delete db.budgets[c];save()}}
-function removeAccount(c){if(confirm('حساب حذف شود؟')){db.accounts=db.accounts.filter(x=>x!==c);save()}}
-function saveSettings(){db.settings={userName:$('userName').value.trim(),appName:$('appName').value.trim()||'حسابیار',theme:$('theme').value,accent:$('accent').value};save()}
-function applySettings(){document.documentElement.dataset.theme=db.settings.theme||'light';document.documentElement.style.setProperty('--accent',db.settings.accent||'#167564');$('brand').textContent=db.settings.appName||'حسابیار';$('welcome').textContent=db.settings.userName?`خوش آمدی، ${db.settings.userName}`:'مدیریت هوشمند دخل‌وخرج و دارایی‌ها'}
-function backup(){let blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='hesabyar-backup.json';a.click();URL.revokeObjectURL(a.href)}
-function restore(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);if(!d.tx||!d.assets||!d.settings)throw Error();db=d;save();alert('اطلاعات بازیابی شد.')}catch{alert('فایل پشتیبان معتبر نیست.')}};r.readAsText(f)}
-function clearAll(){if(confirm('همه تراکنش‌ها، دارایی‌ها و تنظیمات پاک شوند؟ این کار برگشت‌پذیر نیست.')){localStorage.removeItem('hesabyar_pro');db=JSON.parse(JSON.stringify(defaults));save()}}
-function renderAll(){fillSelects();applySettings();renderHome();renderTx();renderAssets();renderPrices();renderReports();renderSettings()}
+function renderAll(){applySettings();options('txCategory',db.categories);options('txAccount',db.accounts);options('budgetCategory',db.categories);renderTx();renderAssets();renderHome();renderReports();renderBudgets();fillSettings()}
+function renderHome(){let m=currentJMonth(),ts=db.tx.filter(t=>showJalaliMonth(t.date||today())===m),inc=ts.filter(t=>t.type==='income').reduce((a,t)=>a+t.amount,0),out=ts.filter(t=>t.type==='expense').reduce((a,t)=>a+t.amount,0);let bal=db.tx.reduce((a,t)=>a+(t.type==='income'?1:-1)*t.amount,0);document.getElementById('balance').textContent=money(bal);document.getElementById('income').textContent=money(inc);document.getElementById('expense').textContent=money(out);document.getElementById('assetTotal').textContent=money(assetTotal());let recent=db.tx.slice().sort((a,b)=>(b.date||'').localeCompare(a.date||'')).slice(0,5);document.getElementById('recent').innerHTML=recent.length?tableTx(recent):'<div class="empty">هنوز تراکنشی ثبت نشده است.</div>'}
+function tableTx(arr){return `<table><thead><tr><th>تاریخ</th><th>عنوان</th><th>دسته</th><th>نوع</th><th>مبلغ</th><th></th></tr></thead><tbody>${arr.map(t=>`<tr><td>${esc(showJalali(t.date))}</td><td>${esc(t.title)}</td><td>${esc(t.category)}</td><td>${t.type==='income'?'درآمد':'هزینه'}</td><td class="${t.type==='income'?'positive':'negative'}">${money(t.amount)}</td><td><button class="danger" onclick="delTx('${t.id}')">حذف</button></td></tr>`).join('')}</tbody></table>`}
+function renderTx(){let arr=db.tx.slice().sort((a,b)=>(b.date||'').localeCompare(a.date||''));document.getElementById('txTable').innerHTML=arr.length?tableTx(arr):'<div class="empty">تراکنشی وجود ندارد.</div>'}
+document.getElementById('txForm').onsubmit=e=>{e.preventDefault();db.tx.push({id:String(Date.now()),type:txType.value,amount:Number(txAmount.value),title:txTitle.value,category:txCategory.value,account:txAccount.value,date:parseJalali(txDate.value,false)});if(!db.tx[db.tx.length-1].date){db.tx.pop();alert('تاریخ شمسی را به شکل ۱۴۰۵/۰۸/۲۰ وارد کن.');return}persist();e.target.reset();txDate.value=showJalali(today());renderAll()}
+function delTx(id){if(confirm('این تراکنش حذف شود؟')){db.tx=db.tx.filter(x=>String(x.id)!==String(id));persist();renderAll()}}
+const marketKeys={usd:'دلار',eur:'یورو',gold18:'طلای ۱۸ عیار',gold24:'طلای ۲۴ عیار',coin:'سکه امامی',half:'نیم‌سکه',quarter:'ربع‌سکه'};
+function assetPrice(a){if(a.type==='manual')return Number(a.price)||0;return Number(market[a.type])||0}function assetTotal(){return db.assets.reduce((s,a)=>s+(assetPrice(a)*Number(a.qty||0)),0)}
+function renderAssets(){let html=db.assets.map(a=>{let name=a.type==='manual'?a.name:marketKeys[a.type];return `<tr><td>${esc(name)}</td><td>${fmt(a.qty)}</td><td>${money(assetPrice(a))}</td><td>${money(assetPrice(a)*a.qty)}</td><td><button class="danger" onclick="delAsset('${a.id}')">حذف</button></td></tr>`}).join('');document.getElementById('assetTable').innerHTML=db.assets.length?`<table><thead><tr><th>دارایی</th><th>مقدار</th><th>قیمت واحد</th><th>ارزش کل</th><th></th></tr></thead><tbody>${html}</tbody></table>`:'<div class="empty">هنوز دارایی ثبت نشده است.</div>'}
+document.getElementById('assetForm').onsubmit=e=>{e.preventDefault();let type=assetType.value;db.assets.push({id:String(Date.now()),type,qty:Number(assetQty.value),name:assetName.value||'دارایی دلخواه',price:Number(assetPrice.value)||0});persist();e.target.reset();assetQty.value=1;renderAll()}
+function delAsset(id){if(confirm('این دارایی حذف شود؟')){db.assets=db.assets.filter(x=>String(x.id)!==String(id));persist();renderAll()}}
+async function refreshPrices(){let url=db.settings.worker||WORKER_DEFAULT;document.getElementById('priceStatus').textContent='در حال دریافت…';try{let r=await fetch(url,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);let j=await r.json();let d=j.data||j.current||j;if(j.success===false)throw Error('منبع قیمت پاسخ موفق نداد');market={usd:Number(d.usd||d.dollar||d.price_dollar_rl)||0,eur:Number(d.eur||d.euro||d.price_eur)||0,gold18:Number(d.gold18||d.geram18)||0,gold24:Number(d.gold24||d.geram24)||0,coin:Number(d.coin||d.sekee)||0,half:Number(d.half||d.nim)||0,quarter:Number(d.quarter||d.rob)||0};document.getElementById('priceStatus').textContent='آخرین دریافت: '+new Date().toLocaleTimeString('fa-IR');document.getElementById('prices').innerHTML=Object.entries(marketKeys).map(([k,n])=>`<div class="price"><span class="muted">${n}</span><b>${market[k]?money(market[k]):'ناموجود'}</b></div>`).join('');renderAssets();renderHome()}catch(e){document.getElementById('priceStatus').textContent='دریافت قیمت ناموفق';document.getElementById('prices').innerHTML='<div class="empty">اتصال به منبع قیمت برقرار نشد. آدرس Worker و دسترسی اینترنت را بررسی کنید.</div>';}}
+function renderReports(){let a=monthTx(),i=a.filter(x=>x.type==='income').reduce((s,x)=>s+x.amount,0),o=a.filter(x=>x.type==='expense').reduce((s,x)=>s+x.amount,0);reportIncome.textContent=money(i);reportExpense.textContent=money(o);reportNet.textContent=money(i-o)}
+function renderBudgets(){let m=parseJalali(document.getElementById('reportMonth').value,true)||currentJMonth();document.getElementById('budgetList').innerHTML=Object.entries(db.budgets).map(([cat,limit])=>{let spent=db.tx.filter(t=>t.type==='expense'&&t.category===cat&&showJalaliMonth(t.date||today())===m).reduce((s,t)=>s+t.amount,0);return `<p>${esc(cat)}: ${money(spent)} از ${money(limit)} <span class="${spent>limit?'negative':'positive'}">${spent>limit?'بیشتر از بودجه':'در محدوده بودجه'}</span></p>`}).join('')||'<div class="empty">هنوز بودجه‌ای تعریف نشده است.</div>'}
+document.getElementById('budgetForm').onsubmit=e=>{e.preventDefault();db.budgets[budgetCategory.value]=Number(budgetAmount.value);persist();renderBudgets();e.target.reset()}
+document.getElementById('reportMonth').onchange=()=>{renderReports();renderBudgets()}
+function fillSettings(){let s=db.settings;setApp.value=s.app||'';setUser.value=s.user||'';setColor.value=s.color||'#176b57';setTheme.value=s.theme||'light';setWorker.value=s.worker||WORKER_DEFAULT}
+function addCustom(){let c=newCategory.value.trim(),a=newAccount.value.trim();if(c&&!db.categories.includes(c))db.categories.push(c);if(a&&!db.accounts.includes(a))db.accounts.push(a);newCategory.value='';newAccount.value='';persist();renderAll();alert('موارد جدید ذخیره شد.')}
+['setApp','setUser','setColor','setTheme','setWorker'].forEach(id=>document.getElementById(id).addEventListener('change',()=>{let s=db.settings;s.app=setApp.value.trim()||'حسابیار شخصی';s.user=setUser.value.trim();s.color=setColor.value;s.theme=setTheme.value;s.worker=setWorker.value.trim()||WORKER_DEFAULT;persist();renderAll()}))
+function backup(){let blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='hesabyar-backup-'+today()+'.json';a.click();URL.revokeObjectURL(a.href)}
+restoreFile.onchange=async e=>{let f=e.target.files[0];if(!f)return;try{let x=JSON.parse(await f.text());if(!Array.isArray(x.tx)||!Array.isArray(x.assets)||!x.settings)throw Error();if(confirm('اطلاعات فعلی با نسخه پشتیبان جایگزین شود؟')){db={...defaults,...x};persist();renderAll();alert('بازیابی انجام شد.')}}catch(err){alert('فایل پشتیبان معتبر نیست.')}e.target.value=''}
+function clearAll(){if(confirm('همه تراکنش‌ها، دارایی‌ها و تنظیمات پاک شود؟ این کار برگشت‌پذیر نیست.')){db=JSON.parse(JSON.stringify(defaults));persist();renderAll()}}
+document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.page').forEach(x=>x.classList.toggle('hide',x.id!==b.dataset.tab));if(b.dataset.tab==='reports'){renderReports();renderBudgets()}})
 renderAll();refreshPrices();setInterval(refreshPrices,60000);
 </script></body></html>
