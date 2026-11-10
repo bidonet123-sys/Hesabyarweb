@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#176b5b">
+<title>حسابیار شخصی</title>
+<style>
+:root{font-family:Tahoma,Arial,sans-serif;color:#19332e;background:#f3f7f5}
+*{box-sizing:border-box}body{margin:0}header{background:#176b5b;color:white;padding:22px 16px}
+header h1{margin:0 0 6px;font-size:24px}header p{margin:0;opacity:.9;font-size:13px}
+main{max-width:850px;margin:auto;padding:14px}.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.card,section{background:white;border-radius:14px;padding:15px;margin-bottom:12px;box-shadow:0 2px 10px #1231}
+.card small{color:#687b75}.value{font-size:20px;font-weight:bold;margin-top:8px}
+h2{font-size:17px;margin:0 0 12px}label{display:block;font-size:13px;margin:10px 0 5px}
+input,select,button{font:inherit;width:100%;padding:12px;border:1px solid #d7e2dd;border-radius:9px;background:white}
+button{background:#176b5b;color:white;border:0;font-weight:bold;margin-top:12px;cursor:pointer}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.item{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid #edf1ef;font-size:13px}
+.item:last-child{border:0}.muted{color:#75847f;font-size:12px}
+.positive{color:#13815d}.negative{color:#bd4b4b}
+.note{background:#fff8e8;color:#75571c;padding:12px;border-radius:10px;font-size:12px;line-height:1.8}
+@media(max-width:430px){.cards{grid-template-columns:1fr 1fr}.value{font-size:17px}.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><h1>حسابیار</h1><p>مدیریت ساده دخل‌وخرج شخصی</p></header>
+<main>
+<div class="cards">
+<div class="card"><small>موجودی خالص</small><div class="value" id="balance">۰ تومان</div></div>
+<div class="card"><small>درآمد این ماه</small><div class="value positive" id="income">۰ تومان</div></div>
+<div class="card"><small>هزینه این ماه</small><div class="value negative" id="expense">۰ تومان</div></div>
+<div class="card"><small>تعداد تراکنش‌ها</small><div class="value" id="count">۰</div></div>
+</div>
+<section>
+<h2>ثبت تراکنش جدید</h2>
+<div class="row"><div><label>نوع</label><select id="type"><option value="expense">هزینه</option><option value="income">درآمد</option></select></div>
+<div><label>مبلغ (تومان)</label><input id="amount" type="number" min="1" placeholder="مثلاً 250000"></div></div>
+<label>عنوان</label><input id="title" placeholder="مثلاً خرید روزانه یا حقوق">
+<label>تاریخ</label><input id="date" type="date">
+<button onclick="add()">ثبت تراکنش</button>
+</section>
+<section><h2>تراکنش‌ها</h2><div id="list" class="muted">هنوز تراکنشی ثبت نشده است.</div></section>
+<section>
+<h2>یادداشت دارایی‌ها</h2>
+<div class="note">می‌توانی ارزش تقریبی دارایی‌هایت مثل طلا، ارز و پس‌انداز را اینجا یادداشت کنی. قیمت‌های این نسخه به‌صورت زنده از TGJU دریافت نمی‌شوند.</div>
+<label>عنوان دارایی</label><input id="assetName" placeholder="مثلاً طلای ۱۸ عیار">
+<label>ارزش تقریبی (تومان)</label><input id="assetValue" type="number" min="0" placeholder="مثلاً 15000000">
+<button onclick="saveAsset()">ذخیره دارایی</button>
+<div id="assets"></div>
+</section>
+<p class="muted">اطلاعات این نسخه فقط در حافظه مرورگر همین دستگاه ذخیره می‌شود. پاک‌کردن داده‌های مرورگر ممکن است آن‌ها را حذف کند.</p>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+let tx=JSON.parse(localStorage.getItem('hesabyar_tx')||'[]');
+let assets=JSON.parse(localStorage.getItem('hesabyar_assets')||'[]');
+$('date').value=new Date().toISOString().slice(0,10);
+const fmt=n=>Number(n).toLocaleString('fa-IR')+' تومان';
+function persist(){localStorage.setItem('hesabyar_tx',JSON.stringify(tx));localStorage.setItem('hesabyar_assets',JSON.stringify(assets));render()}
+function add(){let amount=Number($('amount').value),title=$('title').value.trim();if(!amount||amount<1||!title){alert('مبلغ و عنوان را وارد کن.');return}
+tx.unshift({id:Date.now(),type:$('type').value,amount,title,date:$('date').value});$('amount').value='';$('title').value='';persist()}
+function del(id){if(confirm('این تراکنش حذف شود؟')){tx=tx.filter(x=>x.id!==id);persist()}}
+function saveAsset(){let name=$('assetName').value.trim(),value=Number($('assetValue').value);if(!name||!value){alert('عنوان و ارزش دارایی را وارد کن.');return}assets.unshift({name,value});$('assetName').value='';$('assetValue').value='';persist()}
+function render(){let month=new Date().toISOString().slice(0,7),inc=tx.filter(x=>x.type==='income'&&x.date.startsWith(month)).reduce((s,x)=>s+x.amount,0),exp=tx.filter(x=>x.type==='expense'&&x.date.startsWith(month)).reduce((s,x)=>s+x.amount,0),allIn=tx.filter(x=>x.type==='income').reduce((s,x)=>s+x.amount,0),allOut=tx.filter(x=>x.type==='expense').reduce((s,x)=>s+x.amount,0);
+$('balance').textContent=fmt(allIn-allOut);$('income').textContent=fmt(inc);$('expense').textContent=fmt(exp);$('count').textContent=tx.length.toLocaleString('fa-IR');
+$('list').innerHTML=tx.length?tx.map(x=>`<div class="item"><div><b>${esc(x.title)}</b><div class="muted">${esc(x.date||'')}</div></div><div style="text-align:left"><span class="${x.type==='income'?'positive':'negative'}">${x.type==='income'?'+':'−'} ${fmt(x.amount)}</span><br><a href="#" onclick="del(${x.id});return false">حذف</a></div></div>`).join(''):'هنوز تراکنشی ثبت نشده است.';
+$('assets').innerHTML=assets.map(a=>`<div class="item"><b>${esc(a.name)}</b><span>${fmt(a.value)}</span></div>`).join('')}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+render();
+</script>
+</body></html>
