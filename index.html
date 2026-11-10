@@ -23,6 +23,59 @@ button{background:#176b5b;color:white;border:0;font-weight:bold;margin-top:12px;
 @media(max-width:430px){.cards{grid-template-columns:1fr 1fr}.value{font-size:17px}.row{grid-template-columns:1fr}}
 </style>
 </head>
+  <script>
+const PRICE_API = "https://hesabya-prices.bidonet123.workers.dev/";
+
+async function loadPrices() {
+  const status = document.getElementById("priceStatus");
+  const box = document.getElementById("livePrices");
+  const time = document.getElementById("priceTime");
+
+  status.textContent = "در حال دریافت قیمت‌ها...";
+
+  try {
+    const response = await fetch(PRICE_API + "?t=" + Date.now());
+
+    if (!response.ok) throw new Error("خطا در دریافت اطلاعات");
+
+    const result = await response.json();
+
+    if (!result.success || !Object.keys(result.data).length) {
+      throw new Error("قیمت‌ها دریافت نشدند");
+    }
+
+    box.innerHTML = "";
+
+    Object.values(result.data).forEach(item => {
+      const card = document.createElement("div");
+      card.style.cssText =
+        "padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:10px";
+
+      const title = document.createElement("strong");
+      title.textContent = item.label;
+
+      const price = document.createElement("div");
+      price.textContent =
+        Number(item.toman).toLocaleString("fa-IR") + " تومان";
+
+      card.append(title, price);
+      box.appendChild(card);
+    });
+
+    status.textContent = "قیمت‌ها با موفقیت به‌روز شدند ✅";
+    time.textContent =
+      "آخرین به‌روزرسانی: " +
+      new Date().toLocaleTimeString("fa-IR");
+
+  } catch (error) {
+    status.textContent = "دریافت قیمت ناموفق بود؛ دوباره تلاش کنید.";
+    console.error(error);
+  }
+}
+
+loadPrices();
+setInterval(loadPrices, 60000);
+      </script>
 <body>
 <header><h1>حسابیار</h1><p>مدیریت ساده دخل‌وخرج شخصی</p></header>
 <main>
@@ -49,6 +102,13 @@ button{background:#176b5b;color:white;border:0;font-weight:bold;margin-top:12px;
 <button onclick="saveAsset()">ذخیره دارایی</button>
 <div id="assets"></div>
 </section>
+  <section>
+<h2>قیمت لحظه‌ای بازار</h2>
+<div id="priceStatus" class="muted">در حال دریافت قیمت‌ها...</div>
+<div id="livePrices"></div>
+<button onclick="loadPrices()">به‌روزرسانی قیمت‌ها</button>
+<div id="priceTime" class="muted"></div>
+  </section>
 <p class="muted">اطلاعات این نسخه فقط در حافظه مرورگر همین دستگاه ذخیره می‌شود. پاک‌کردن داده‌های مرورگر ممکن است آن‌ها را حذف کند.</p>
 </main>
 <script>
